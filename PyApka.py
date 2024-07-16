@@ -91,8 +91,9 @@ def GetCreds():
             creds['api_key'] = api[0].strip().split(':')[1].strip()
             f.close()
         else:
-            print(f'{red}Invalid Creds Syntax Found')
+            print(f'{red}Invalid Account Creds Found\n\nPlease Review The "creds.txt" File.')
             f.close()
+            sleep(3)
             return False
         
         return creds
