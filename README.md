@@ -30,7 +30,7 @@ Welcome to the repository! This project leverages Python Playwright to control a
 C:\Users\your_username\AppData\Local\ms-playwright\chromium-1124
 ```
 
-2. **Copy Folder Called `chrome-win` into The Repository Directory**
+2. **Copy Folder Called `chrome-win` and Paste it into The Repository Directory**
 
 3. **Rename the `chrome-win` into `chromewin`**
 
