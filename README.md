@@ -29,12 +29,7 @@ This repository requires a Chromium browser to be controlled by Playwright. The 
 
 ### Steps to Download Chromium Browser
 
-1. **Install Playwright:**
-    ```sh
-    pip install playwright
-    ```
-
-2. **Download the necessary browser binaries:**
+1. **Download the necessary browser binaries:**
     ```sh
     python -m playwright install chromium
     ```
