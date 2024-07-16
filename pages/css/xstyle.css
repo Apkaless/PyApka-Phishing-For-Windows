@@ -1,0 +1,271 @@
+
+/* ************ GOOGLE FONTS ************  */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+/* ************ GENERAL STYLES ************  */
+
+:root {
+    --white-color: #e7e9ea;
+    --white-color-hover: #e6e6e6;
+    --black-color: #0f1419;
+    --label-focus-color: #1d9bf0;
+    --bg-color: #242d34;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--bg-color);
+    height: 100vh;
+    color: var(--white-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button {
+    border: none;
+    background: none;
+    font-family: inherit;
+    color: inherit;
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+    font-family: inherit;
+    color: inherit;
+}
+
+.container {
+    max-width: 600px;
+    width: 100%;
+    background-color: #000;
+    padding: 30px 20px;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.close_button {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 25px;
+    padding: 8px;
+    border-radius: 50%;
+}
+
+.close_button:hover {
+    background-color: var(--black-color);
+}
+
+.logo {
+    font-size: 30px;
+}
+
+.content {
+    width: 300px;
+    height:500px;
+    align-items: stretch;
+    background-color: rgba(0, 0, 0, 0.00);
+    border: 0 solid black;
+    box-sizing: border-box;
+    display: flex;
+    flex-basis: auto;
+    flex-direction: column;
+    flex-shrink: 0;
+    list-style: none;
+    margin: 0px;
+    min-height: 0px;
+    min-width: 0px;
+    padding: 0px;
+    position: relative;
+    text-decoration: none;
+    z-index: 0;
+}
+
+.content h1 {
+    margin-block: 24px;
+}
+
+.sign_in_buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1.3rem;
+}
+
+.primary,
+.secondary {
+    width: 100%;
+    border-radius: 20px;
+    padding: 8px 0;
+    font-size: 15px;
+    font-weight: 500;
+    transition: .2s ease;
+}
+
+.primary {
+    background-color: #fff;
+    color: var(--black-color);
+}
+
+.primary:hover {
+    background-color: var(--white-color-hover);
+}
+
+.secondary {
+    background-color: transparent;
+    color: #fff;
+    border: 1px solid #536471;
+}
+
+.secondary:hover {
+    background-color: #181919;
+}
+
+.sign_in {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+object {
+    max-width: 24px;
+    max-height: 24px;
+}
+
+.divider {
+    width: 100%;
+    margin-block: 20px;
+    position: relative;
+}
+
+.divider p::before,
+.divider p::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 45%;
+    height: 1px;
+    background-color: #333639;
+}
+
+.divider p::before {
+    left: 0;
+}
+
+.divider p::after {
+    right: 0;
+}
+
+.divider p{
+    position: static;
+    margin-left: 145px;
+}
+
+.email_label {
+    width: 100%;
+    position: relative;
+}
+
+.email_label input {
+    width: 100%;
+    border-radius: 6px;
+    background-color: transparent;
+    border: 1px solid #333639;
+    padding: 25px 10px 5px 10px;
+    outline: none;
+    color: #fff;
+    font-size: 18px;
+    font-family: inherit;
+}
+
+
+.pass_label {
+    width: 100%;
+    position: relative;
+}
+
+.pass_label input {
+    width: 100%;
+    border-radius: 6px;
+    background-color: transparent;
+    border: 1px solid #333639;
+    margin-top: 10px;
+    padding: 25px 10px 5px 10px;
+    outline: none;
+    color: #fff;
+    font-size: 18px;
+    font-family: inherit;
+}
+
+
+input::placeholder {
+    opacity: 0;
+}
+
+input + label {
+    position: absolute;
+    top: 15px;
+    left: 10px;
+    color: #71767b;
+    font-size: 18px;
+    pointer-events: none;
+    transition: .2s ease;
+}
+
+input:focus {
+    outline: 1px solid var(--label-focus-color);
+}
+
+input:focus + label {
+    color: var(--label-focus-color);
+}
+
+input:focus + label {
+    top: 6px;
+    left: 10px;
+    font-size: 12px;
+}
+
+#passwd:focus + label{
+    top: 15px;
+    left: 10px;
+    font-size: 12px;
+
+}
+.sign_up,
+.register {
+    margin-top: 1.3rem;
+}
+
+.register {
+    font-weight: 300px;
+    font-size: 14px;
+    color: #71767b;
+}
+
+.register a {
+    color: var(--label-focus-color);
+}
+
+.register a:hover {
+    text-decoration: underline;
+}

