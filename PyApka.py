@@ -6,7 +6,7 @@ from threading import Thread
 from time import sleep
 import os
 import random
-
+import re
 
 
 def choose_page():
@@ -75,6 +75,28 @@ def choose_page():
             os.system('cls')
             exit(1)
 
+def GetCreds():
+    email_pattern = r"Email:\s?[a-zA-Z0-9.-]+@+[a-zA-Z0-9-_]+\.+[a-zA-Z0-9]+"
+    password_pattern = r"Password:\s?[a-zA-Z0-9.-@!#$%^&*()_+=?><,.\\/~`]+"
+    api_pattern = r"API_KEY:\s?[a-zA-Z0-9.-@!#$%^&*()_+=?><,.\\/~`]+"
+    creds = {}
+    with open('creds.txt', 'r', encoding='utf-8') as f:
+        data = f.read().strip()
+        email = re.findall(email_pattern, data)
+        password = re.findall(password_pattern, data)
+        api = re.findall(api_pattern, data)
+        if email and password and api:
+            creds['email'] = email[0].split(':')[1].strip()
+            creds['password'] = password[0].strip().split(':')[1].strip()
+            creds['api_key'] = api[0].strip().split(':')[1].strip()
+            f.close()
+        else:
+            print(f'{red}Invalid Creds Syntax Found')
+            f.close()
+            return False
+        
+        return creds
+
 class handler_(SimpleHTTPRequestHandler):
     def log_message(self, format, *args):
             pass
@@ -118,11 +140,14 @@ if __name__ == '__main__':
     res = Fore.RESET
     media_name = choose_page()
     localPath = os.getcwd()
+    creds = GetCreds()
     try:
-        API_KEY = 'Pa5SNWF138Jq4VDMl9nZhdU7KTmkBeYtObcwgG6oRiu0s'
+        API_KEY = f'{creds.get('api_key')}'
+        EMAIL = f'{creds.get('email')}'
+        PASSWORD = f'{creds.get('password')}'
         LOCALHOST = '0.0.0.0'
         SERVER_PORT = random.randint(1000, 65535)
-        tolnet = LOCALTONET(API_KEY)
+        tolnet = LOCALTONET(EMAIL, PASSWORD, API_KEY)
         authToken = tolnet.token
         verify_token = tolnet.verifyToken
         port = str(SERVER_PORT)

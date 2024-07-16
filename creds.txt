@@ -1,0 +1,13 @@
+Please Go To this website:
+https://localtonet.com/
+
+Create An Account with email and password
+
+Then Go to 
+https://localtonet.com/dashboard
+
+And Copy your API Key And Fill The Following Params:
+
+Email: Put Your LocalToNet Accounts Email
+Password: Put Your LocalToNet Accounts Password
+API_KEY: Put Your LocalToNet Accounts API KEY

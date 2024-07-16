@@ -17,7 +17,9 @@ white = Fore.WHITE
 
 class LOCALTONET:
 
-    def __init__(self, api_key) -> None:
+    def __init__(self, email, password, api_key) -> None:
+        self.email = email
+        self.password = password
         self.api = api_key
         self.authTokUrl = 'https://localtonet.com/api/GetAuthTokens'
         self.TcpUdpCreationUrl = 'https://localtonet.com/tunnel/createtcpudp'
@@ -62,8 +64,8 @@ class LOCALTONET:
                     continue
             time.sleep(1)
             print(f'\n{green}🔃 {cyan}Trying Logging in')
-            page.fill('#Input_Email', 'sabah.hsab1234@gmail.com')
-            page.fill('#Input_Password', 'Ya1122334455')
+            page.fill('#Input_Email', self.email)
+            page.fill('#Input_Password', self.password)
             page.click('#kt_sign_up_submit')
             time.sleep(2)
             os.system('cls')
