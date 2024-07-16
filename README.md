@@ -36,17 +36,10 @@ This repository requires a Chromium browser to be controlled by Playwright. The 
 
 This command will download the Chromium browser and place it in the appropriate directory managed by Playwright.
 
-## Usage
-
-Once the setup is complete, you can run the Python scripts that use Playwright to control the Chromium browser. Make sure your scripts are configured to reference the correct browser path if necessary.
 
 ## Contributing
 
 Feel free to fork this repository, make changes, and submit pull requests. Any contributions are welcome!
-
-## License
-
-This project is licensed under the MIT License. See the `LICENSE` file for more details.
 
 ---
 
