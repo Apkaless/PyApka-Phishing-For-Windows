@@ -25,16 +25,16 @@ Welcome to the repository! This project leverages Python Playwright to control a
 
 ## Setting Up Chromium
 
-This repository requires a Chromium browser to be controlled by Playwright. The `chromewin` folder, which should contain the Chromium browser, is missing. You need to download the browser using the Playwright Python library.
+1. **After installing all the requirements, Go to this path:**
+```sh
+C:\Users\sabah\AppData\Local\ms-playwright\chromium-1124
+```
 
-### Steps to Download Chromium Browser
+2. **Copy Folder Called `chrome-win` into The Repository Directory
 
-1. **Download the necessary browser binaries:**
-    ```sh
-    python -m playwright install chromium
-    ```
+3. **Rename the `chrome-win` into `chromewin`
 
-This command will download the Chromium browser and place it in the appropriate directory managed by Playwright.
+4. **Thats it, You Are Done**
 
 
 ## Contributing
