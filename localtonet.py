@@ -45,15 +45,14 @@ class LOCALTONET:
     def killProcess(self):
         res = subprocess.check_call('taskkill /IM "localclient.exe" /F')
         return res
-    
+        
     def CreateTcpUdpTunnel(self, port: str):
         current_path = os.getcwd()
         browserPath = Path(os.path.join(current_path, 'chromewin', 'chrome.exe'))
         with sync_playwright() as p:
-
             browser = p.chromium.launch(executable_path=browserPath.absolute(), headless=True, slow_mo=50)
             context = browser.new_context()
-            page = browser.new_page()
+            page = context.new_page()
             print('🔃 Please Wait...')
             while True:
                 time.sleep(1)
@@ -63,9 +62,11 @@ class LOCALTONET:
                 except:
                     continue
             time.sleep(1)
+            os.system('cls')
             print(f'\n{green}🔃 {cyan}Trying Logging in')
             page.fill('#Input_Email', self.email)
             page.fill('#Input_Password', self.password)
+            time.sleep(1)
             page.click('#kt_sign_up_submit')
             time.sleep(2)
             os.system('cls')
@@ -77,7 +78,8 @@ class LOCALTONET:
                 try:
                     page.goto('https://localtonet.com/tunnel/tcpudp')
                     break
-                except:
+                except Exception as e:
+                    print(e)
                     continue
             time.sleep(1)
             os.system('cls')
@@ -106,10 +108,8 @@ class LOCALTONET:
             page.fill('#createTcpUdpForm > div:nth-child(2) > div:nth-child(2) > div > input', port)
             time.sleep(1)
             page.click('#createTcpUdpForm > div:nth-child(2) > div:nth-child(5) > button')
-            time.sleep(2)
-            page.get_by_role('button', name='Start').click()
-            page.wait_for_load_state(state='load')
-            time.sleep(8)
+            time.sleep(5)
+            identity = None
             html = page.content()
             soup = bs(html, 'lxml')
             tr = soup.find('tr', class_='odd')
@@ -117,13 +117,35 @@ class LOCALTONET:
             tds = soup.find_all('td', class_='dt-center')
             for td in tds:
                 try:
-                    server_id = td.span.getText()
+                    server_id = str(td.span.getText()).strip()
                     break
                 except Exception as e:
                     continue
-        
-        return {'Status': 'Running', 'ID': tunnel_id, 'Server': server_id}
-        
+            for cookie in context.cookies():
+                if cookie['name'] == '.AspNetCore.Identity.Application':
+                    identity = cookie['value']
+        return {'ID': tunnel_id, 'Server': server_id, 'Identity': identity }
+
+    def startTunnel(self, id: str, identity: str):
+        os.system('cls')
+        print(f'\n{green}🔃 Starting {cyan}TCP/UDP {green}Tunnel')
+        headers = {
+            'cookie': f'.AspNetCore.Identity.Application={identity}'
+        }
+
+        res = requests.post('https://localtonet.com/tunnel/relayprocess', data={'id': f'{id}'}, headers=headers)
+        json_res = res.json()
+        os.system('cls')
+        if json_res['data']['isSuccess'] == True:
+            tunnel_req = requests.get('https://localtonet.com/tunnel/getusertcpudp?maxResultCount=10&skipCount=1&type=&token=&search=', headers=headers)
+            json_response = tunnel_req.json()
+            print(f'{cyan}[🗸] {green}Tunneling Has Been Started')
+            return json_response['result'][0]['serverPort']
+        else:
+            print(f'{red}[x] Failed To Start The Tunnel.')
+            time.sleep(3)
+            return False
+
     def GetAuthToken(self):
         """
         
